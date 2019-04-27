@@ -14,11 +14,12 @@ int main(){
     //     return 0;
     // }
     //Size board_size = Size(20,20);
+    cout << "Để thoát game nhấn q" << endl;
+    usleep(1e6);
     Board game_board(Size(11, 11));
     game_board.run();
-    cout << "Để thoát game nhấn q" << endl;
-    //usleep(3e6);
+    //
     // game_board.clearScreen();
-    game_board.printBoard();
+    // game_board.printBoard();
     return 0;
 }

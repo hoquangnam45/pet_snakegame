@@ -132,17 +132,21 @@ void Board::run(){
 				case 'd':
 					medusa.moveRight();
 					break;
+				case 'q':
+					gameOver = 1;
+					goto Score_output;
+					break;
 				default:
 					medusa.move();
 					break;
 			}
 			moveFlag = 1;
 		}
-		// else {
-		//	oldTail = medusa.getSnakeBody().getTail()->getData();
-		// 	medusa.move();
-		// 	moveFlag = 1;
-		// }
+		else {
+			oldTail = medusa.getSnakeBody().getTail()->getData();
+			medusa.move();
+			moveFlag = 1;
+		}
 
 		//cout << "ss" << endl;
 	// 	else 
@@ -151,6 +155,8 @@ void Board::run(){
 		printBoard();
 		usleep(3e5);
 	}
+	Score_output:
+	cout << "Bạn rất bá đạo, ghi được " << score << " điểm" << endl;
 }
 // void Board::clearBoard(){
 //     delete board_cell;\
@@ -180,6 +186,7 @@ void Board::updateBoard(){
 			medusa.eat();
 			growFlag = 1;
 			foodFlag = 0;
+			score++;
 		}
 		else if(headCell.getType() == cellType::SNAKE || headCell.getType() == cellType::WALL){
 			gameOver = 1;

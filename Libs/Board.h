@@ -27,7 +27,8 @@ class Board{
         Food apple;
         int numPlayableCell = 0;
         Cell oldTail;
-        int foodPos;
+        int foodPos; // for debugging
+        int score = 0;
         bool gameOver = 0; // determine if gameover
         bool moveFlag = 0; // determine if snake move
         bool foodFlag = 0; // determine if food generated
