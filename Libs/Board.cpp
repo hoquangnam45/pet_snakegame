@@ -5,7 +5,9 @@
 #include <termios.h>
 #include <unistd.h>
 using namespace std;
-
+#define CHAR_SNAKE_HEAD '*'
+#define CHAR_SNAKE_BODY '#'
+#define CHAR_FOOD '$'
 bool kbhit(){
     termios term;
     tcgetattr(0, &term);
@@ -97,8 +99,8 @@ void Board::initBoard(Size board_sizes){
 			return;
 		}
 		board_cell[flatIndex(row, col)] = snakeSegment->getData();
-		if (!idx) board_buffer[flatIndex(row, col)] = '0';
-		else board_buffer[flatIndex(row, col)] = 'o';
+		if (!idx) board_buffer[flatIndex(row, col)] = CHAR_SNAKE_HEAD;
+		else board_buffer[flatIndex(row, col)] = CHAR_SNAKE_BODY;
 		idx++;
 		snakeSegment = snakeSegment->getNextNode();
 	}
@@ -171,8 +173,8 @@ void Board::updateBoard(){
 
 		Cell headCell = board_cell[flatIndex(headRow, headCol)].getType();
 		// Update head
-		board_buffer[flatIndex(headRow, headCol)] = 'O';
-		board_buffer[flatIndex(headNextRow, headNextCol)] = 'o';
+		board_buffer[flatIndex(headRow, headCol)] = CHAR_SNAKE_HEAD;
+		board_buffer[flatIndex(headNextRow, headNextCol)] = CHAR_SNAKE_BODY;
 		board_cell[flatIndex(headRow, headCol)].setType(cellType::SNAKE);
 		// Update tail 
 		if (!growFlag){
@@ -203,7 +205,7 @@ void Board::updateBoard(){
 			}
 			while (--randomCell);
 			board_cell[i].setType(cellType::FOOD);
-			board_buffer[i] = '*';
+			board_buffer[i] = CHAR_FOOD;
 			foodPos = i;
 			foodFlag = 1;
 		};
