@@ -5,8 +5,8 @@
 #include <termios.h>
 #include <unistd.h>
 using namespace std;
-#define CHAR_SNAKE_HEAD '*'
-#define CHAR_SNAKE_BODY '#'
+#define CHAR_SNAKE_HEAD 'O'
+#define CHAR_SNAKE_BODY 'K'
 #define CHAR_FOOD '$'
 bool kbhit(){
     termios term;
@@ -158,7 +158,7 @@ void Board::run(){
 		usleep(3e5);
 	}
 	Score_output:
-	cout << "Bạn rất bá đạo, ghi được " << score << " điểm" << endl;
+	cout << "OK, Bạn rất bá đạo, ghi được " << score << " điểm" << endl;
 }
 // void Board::clearBoard(){
 //     delete board_cell;\
