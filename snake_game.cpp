@@ -16,7 +16,7 @@ int main(){
     //Size board_size = Size(20,20);
     cout << "Để thoát game nhấn q" << endl;
     usleep(1e6);
-    Board game_board(Size(11, 11));
+    Board game_board(Size(64, 48));
     game_board.run();
     //
     // game_board.clearScreen();

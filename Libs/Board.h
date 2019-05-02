@@ -2,6 +2,9 @@
 #include "Snake.h"
 // #include "Snake.h"
 #include "Food.h"
+#include "OLED/sparklibs.h"
+#include "OLED/oled/Edison_OLED.h"
+#include "OLED/gpio/gpio.h"
 #define CELL_PRINT_SIZE 1
 class Board{
     public:
@@ -19,6 +22,19 @@ class Board{
         // void updateBoard(Food&);
         // void updateBoard(Snake&);
     private:
+        // Define an edOLED object:
+        edOLED oled;
+        // Pin definitions:
+        // All buttons have pull-up resistors on-board, so just declare
+        // them as regular INPUT's
+        // gpio BUTTON_UP;
+        // gpio BUTTON_DOWN;
+        // gpio BUTTON_LEFT;
+        // gpio BUTTON_RIGHT;
+        // gpio BUTTON_SELECT;
+        // gpio BUTTON_A;
+        // gpio BUTTON_B;
+
         const int defaultSnakeLength = 3;
         Size board_size;
         Cell* board_cell;

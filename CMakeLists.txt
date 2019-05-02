@@ -1,5 +1,6 @@
 project(snake_game)
 
+set (CMAKE_CXX_STANDARD 11)
 # Set a default build type if none was specified
 set(default_build_type "Release")
 if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
@@ -15,4 +16,8 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
-add_executable(snake_game snake_game.cpp Libs/Board.cpp Libs/Cell.cpp Libs/Size.cpp Libs/LinkedList.cpp Libs/LinkedNode.cpp Libs/Snake.cpp Libs/Food.cpp)
+file( GLOB_RECURSE LIB_SOURCES Libs/*.cpp )
+
+#message( ${LIB_SOURCES})
+
+add_executable(snake_game snake_game.cpp ${LIB_SOURCES})
